@@ -85,7 +85,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
-def NNmodel(h1=3000,h2=3000,h3=3000,h4):
+def NNmodel(h1=3000,h2=3000,h3=3000,h4=3000):
     clf = Pipeline([('classifier',
                      MLPClassifier(hidden_layer_sizes=(h1,h2,h3,h4,), activation='relu', max_iter=2000, alpha=1e-4,
                                    solver='adam', learning_rate='adaptive', verbose=True, tol=0.0001, random_state=3,
