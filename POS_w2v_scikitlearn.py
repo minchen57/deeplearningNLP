@@ -93,7 +93,7 @@ def NNmodel(h1=3000):
     return clf
 
 result=[]
-for i in [100, 200, 500, 1000,1500,2000, 2500]:
+for i in [3000,3500,4000,4500,5000,5500]:
     clf = NNmodel(i)
     clf.fit(X[:50000], y[:50000])
     print('Training completed')
