@@ -85,23 +85,25 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
-def NNmodel(h1=3000):
+def NNmodel(h1=3000,h2=3000,h3=3000,h4):
     clf = Pipeline([('classifier',
-                     MLPClassifier(hidden_layer_sizes=(h1,), activation='relu', max_iter=2000, alpha=1e-4,
+                     MLPClassifier(hidden_layer_sizes=(h1,h2,h3,h4,), activation='relu', max_iter=2000, alpha=1e-4,
                                    solver='adam', learning_rate='adaptive', verbose=True, tol=0.0001, random_state=3,
                                    learning_rate_init=.001))])
     return clf
 
 result=[]
-for i in [3000,3500,4000,4500,5000,5500]:
-    clf = NNmodel(i)
+for i in [3000,4000]:
+    clf = NNmodel(3000,3000,3000,i)
     clf.fit(X[:50000], y[:50000])
     print('Training completed')
     X_test, y_test = transform_to_dataset(test_sentences, model)
     acc = clf.score(X_test, y_test)
-    result.append((i,0,acc))
-    print("hidden1: ", i)
-    print("hidden2: ", 0)
+    result.append((3000,3000,3000,i,acc))
+    print("hidden1: ", 3000)
+    print("hidden2: ", 3000)
+    print("hidden3: ", 3000)
+    print("hidden4: ", i)
     print("Accuracy:", acc)
 
 print(result)
