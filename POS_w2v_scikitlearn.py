@@ -28,11 +28,6 @@ def train_w2v(sent_list, size=100):
     model.delete_temporary_training_data(replace_word_vectors_with_normalized=True)
     return model
 
-# model2 = gensim.models.Word2Vec(untagged_whole(tagged_sentences)[0:3], min_count=1)
-# print(untagged_whole(tagged_sentences)[0:3])
-# print(model2.wv['old','years'])
-# print(len(model2.wv['old','years']))
-
 def features(sentence, index, size, w2vmodel):
     """ sentence: [w1, w2, ...], index: the index of the word """
     input_vec = np.empty((0, 0), float)
