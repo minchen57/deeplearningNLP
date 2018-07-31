@@ -1,0 +1,128 @@
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{footnote}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{notation*}{Notation}
+\newtheorem*{algorithm*}{Algorithm}
+\newtheorem*{remark*}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{algorithm}{Algorithm}[section]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{summary}[theorem]{Summary}
+\newtheorem{assumption}{Assumption}[section]
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\let\Pr\relax
+\DeclareMathOperator*{\Pr}{\mathbb{P}}
+
+\begin{document}
+
+\title{Report for Independent Study\\
+Deep Learning and Part-of-speech Tagging}
+\author{Min Chen}
+\date{\today}
+\maketitle
+\thispagestyle{fancy}
+\lhead{Deep Learning and POS}
+\rhead{IUB Summer 2018}
+\rfoot{Page \thepage}
+
+\begin{abstract}
+	
+This is the report for an independent study with Prof. Damir Cavar at Indiana 
+University Bloomington for the Summer Semester 2018. The independent 
+study is conducted in several parts throughout the summer including reading 
+groups led by Prof. Damir, guided reading over reference books, slides and 
+papers, as well as hands-on coding for part-of-speech tagging using deep 
+learning techniques. 
+
+\end{abstract}
+\pagebreak
+\tableofcontents
+\pagebreak
+
+
+\section{Introduction}
+
+Deep learning has been a hot topic in computer science especially artificial 
+intelligence (AI) in recent years, especially after the five-game Go match 
+between 18-time world champion Lee Sedol and AlphaGo, a computer Go 
+program developed by Google DeepMind. Deep learning or more specifically, 
+deep neural networks has been applied to most if not all AI applications such 
+as computer vision and natural language processing. 
+
+Prof. Damir Cavar at Indiana University taught a course named Deep Learning 
+and NLP in Spring 2017 and I did not have chance to participate. Since the 
+techniques and applications of deep learning is so interesting and important, 
+I decided to participate in an independent study with Prof. Cavar, focusing on 
+deep learning with applications on natural language processing. 
+
+
+\paragraph{Outline}The report is structured in the following way: 
+Part \ref{p:pre} talks about basic streaming models and definitions followed 
+by commonly used probability tools in the analysis in this field including 
+several inequalities for bounding the tail distributions. It also provides a 
+summary of the widely used universal hash family and pseudo-random 
+generator for sublinear space. The author tried to unify materials from 
+several places and present in a easily understandable way with clear 
+indications on the space usage and construction method. Part \ref{p:fm} 
+focuses on frequency moments estimation and Part \ref{p:pq-hh} focuses on 
+two related problems point query and heavy hitters. In these parts, the 
+author unifies the algorithm from several lecture notes and organize them 
+logically. Part \ref{p:sr-l0} introduces the important concept of 
+$l_0$-sampling which is used as a tool for the graph sketches in Part 
+\ref{p:graph}.
+
+
+\paragraph{Materials and Resources }
+There are several important sources that the author read and referenced 
+when studying this topic and writing the report. 
+\begin{itemize}
+	\item Prof. Qin Zhang's course materials and 
+	slides  \cite{zhang2017-slides}.The author followed these sets of slides as 
+	a guidance for the major topics with a focus two parts, Sublinear in space 
+	and Sublinear in communication. 
+	\item Lecture Notes by Prof. Amit Chakrabarti  \cite{Cha2015-notes}. The 
+	lecture notes provides detailed explanation, correctness proof and 
+	discussion of several of the important streaming algorithms. 
+	\item Course materials  by Prof. Jelani Nelson  \cite{Nel2015-web}. Prof. 
+	Nelson from Harvard provides detailed lecture notes with Youtube videos 
+	for recorded lectures. 
+	\item Two papers by Ann, Guha and 
+	McGregor  \cite{AGM2012-analyzing}  \cite{AGM2012-graph}. These 
+	papers discuss a series of algorithms for graph sketch based on a sketch 
+	algorithm of connectivity. 
+	\item Text book: Probability and Computing by Mitzenmacher and 
+	Upfal  \cite{MU-probability}. The book provides detailed explanation with 
+	examples illustrating randomized algorithms used in computing. Some of 
+	the preliminary probability tools are learnt and summarized from this book.
+	\item Other notes, materials and papers used, will be acknowledged and 
+	cited in later sections.
+\end{itemize}
+
+
+\pagebreak
+\appendix
+
+\bibliographystyle{alpha}
+\bibliography{report} 
+
+\end{document}
