@@ -1,3 +1,21 @@
+#!/usr/bin/env python
+
+'''
+POS_LSTM_keras_w2v.py
+Min Chen <mc43@iu.edu>
+Project: Deep Learning and POS tagging
+
+Corpus: Treebank from NLTK, Brown
+Libary: keras
+Model: BILSTM RNN
+Word Embedding: Yes
+
+Last Updated by Min Chen - Aug 2,2018
+
+Some code modified from https://github.com/aneesh-joshi/LSTM_POS_Tagger
+
+'''
+
 import nltk, gensim, os
 import numpy as np
 from keras.utils import plot_model
@@ -19,9 +37,19 @@ EMBEDDING_DIM = 300
 CUSTOM_SEED = 42
 TEST_SPLIT = 0.2
 VALIDATION_SPLIT = 0.25
-PATH = 'results/POS_LSTM_keras_w2v_brown/'
 #CORPUS = 'Treebank'
 CORPUS = 'Brown'
+
+
+if CORPUS == 'Treebank':
+    tagged_sentences = nltk.corpus.treebank.tagged_sents()
+    PATH = 'results/POS_LSTM_keras_w2v/'
+else:
+    tagged_sentences = nltk.corpus.brown.tagged_sents()
+    PATH = 'results/POS_LSTM_keras_w2v_brown/'
+print(tagged_sentences[0])
+print("Tagged sentences: ", len(tagged_sentences))
+
 
 def plot_model_performance(train_loss, train_acc, train_val_loss, train_val_acc, save_figure_path):
     """ Plot model loss and accuracy through epochs. """
@@ -78,13 +106,6 @@ def token2vec(token,w2vmodel):
 
 def apply2int(list, dict):
     return [dict[l] for l in list]
-
-if CORPUS == 'Treebank':
-    tagged_sentences = nltk.corpus.treebank.tagged_sents()
-else:
-    tagged_sentences = nltk.corpus.brown.tagged_sents()
-print(tagged_sentences[0])
-print("Tagged sentences: ", len(tagged_sentences))
 
 
 w2vmodel = train_w2v(untagged_whole(tagged_sentences), EMBEDDING_DIM)
@@ -167,15 +188,15 @@ model.compile(loss='categorical_crossentropy',
 print("model fitting - Bidirectional LSTM")
 model.summary()
 
-earlystopper = EarlyStopping(monitor='val_acc', patience=3, verbose=1)
+#earlystopper = EarlyStopping(monitor='val_acc', patience=5, verbose=1)
+#callbacks=[earlystopper]
 
 x= model.fit(X_train, y_train,
           batch_size=256,
-          epochs=5,
+          epochs=3,
           validation_data=(X_val, y_val),
           shuffle = True,
-          verbose = 1,
-          callbacks=[earlystopper]
+          verbose = 1
           )
 
 if not os.path.exists(PATH):

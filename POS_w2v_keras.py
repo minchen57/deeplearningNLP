@@ -1,5 +1,16 @@
+#!/usr/bin/env python
+
 '''
-Modified from https://techblog.cdiscount.com/part-speech-tagging-tutorial-keras-deep-learning-library/
+POS_w2v_keras.py
+Min Chen <mc43@iu.edu>
+Project: Deep Learning and POS tagging
+
+Corpus: Treebank from NLTK
+Libary: keras
+Model: Neural Network
+Word Embedding: Yes
+
+Last Updated by Min Chen - Aug 2,2018
 
 '''
 

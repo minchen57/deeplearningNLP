@@ -1,7 +1,18 @@
 #!/usr/bin/env python
 
 '''
-Modified from https://nlpforhackers.io/training-pos-tagger/
+POS_w2v_scikitlearn.py
+Min Chen <mc43@iu.edu>
+Project: Deep Learning and POS tagging
+
+Corpus: Treebank from NLTK
+Libary: scikit-learn
+Model: Decision tree, Random Forest, Neural Network
+Word Embedding: Yes
+
+Last Updated by Min Chen - Aug 2,2018
+
+
 '''
 
 import nltk, gensim

@@ -1,7 +1,22 @@
-'''
-Modified from https://techblog.cdiscount.com/part-speech-tagging-tutorial-keras-deep-learning-library/
+#!/usr/bin/env python
 
 '''
+POS_keras_scikitlearnwrapper.py
+Min Chen <mc43@iu.edu>
+Project: Deep Learning and POS tagging
+
+Corpus: Treebank from NLTK, Brown
+Libary: scikit-learn, keras
+Model: Neural Network
+Word Embedding: No
+
+Last Updated by Min Chen - Aug 2,2018
+
+Some code modified from https://techblog.cdiscount.com/part-speech-tagging-tutorial-keras-deep-learning-library/
+
+'''
+
+
 
 
 import nltk, os
@@ -106,12 +121,13 @@ if __name__ == '__main__':
     np.random.seed(CUSTOM_SEED)
     # CORPUS = 'Treebank'
     CORPUS = 'Brown'
-    PATH = 'results/POS_keras_brown/'
 
     if CORPUS == 'Treebank':
         tagged_sentences = nltk.corpus.treebank.tagged_sents()
+        PATH = 'results/POS_keras/'
     else:
         tagged_sentences = nltk.corpus.brown.tagged_sents()
+        PATH = 'results/POS_keras_brown/'
     print(tagged_sentences[0])
     print("Tagged sentences: ", len(tagged_sentences))
 
