@@ -1,9 +1,22 @@
+#!/usr/bin/env python
+
 '''
-Modified from https://nlpforhackers.io/training-pos-tagger/
+POS_scikitlearn.py
+Min Chen <mc43@iu.edu>
+Project: Deep Learning and POS tagging
+
+Corpus: Treebank from NLTK
+Libary: scikit-learn
+Model: Decision tree, Random Forest, Neural Network
+Word Embedding: No
+
+Last Updated by Min Chen - Aug 2,2018
+
+Some code modified from https://nlpforhackers.io/training-pos-tagger/
 
 '''
 
-import nltk, pprint
+import nltk
 
 tagged_sentences = nltk.corpus.treebank.tagged_sents()
 
@@ -70,6 +83,42 @@ from sklearn.neural_network import MLPClassifier
 #    [('vectorizer', DictVectorizer(sparse=False)), ('classifier', DecisionTreeClassifier(criterion='entropy'))])
 # Training completed
 # Accuracy: 0.9428732122770368
+
+
+# clf = Pipeline([('vectorizer', DictVectorizer(sparse=False)),
+#                 ('classifier',RandomForestClassifier(verbose=1,criterion='entropy',n_estimators=100))])
+#
+# clf.fit(X[:70000],y[:70000])
+# Accuracy: 0.950466013177
+
+# clf = Pipeline(
+#     [('vectorizer', DictVectorizer(sparse=False)),
+#      ('classifier', MLPClassifier(hidden_layer_sizes=(50,50,),activation='relu', max_iter=1000, alpha=1e-4,
+#                                   solver='adam',
+#                                   verbose=True, tol=0.0001, random_state=1,learning_rate_init=.001))])
+#
+# clf.fit(X[:70000],y[:70000])
+# Accuracy: 0.9497830628314318
+
+
+# clf = Pipeline(
+#     [('vectorizer', DictVectorizer(sparse=False)),
+#      ('classifier', MLPClassifier(hidden_layer_sizes=(200,),activation='relu', max_iter=1000, alpha=1e-4,
+#                                   solver='adam',learning_rate='adaptive',
+#                                   verbose=True, tol=0.0001, random_state=1,learning_rate_init=.001))])
+#
+# clf.fit(X[:70000],y[:70000])
+# Accuracy: 0.9528362526112807
+
+# clf = Pipeline(
+#     [('vectorizer', DictVectorizer(sparse=False)),
+#      ('classifier', MLPClassifier(hidden_layer_sizes=(800,30,),activation='relu', max_iter=1000, alpha=1e-4,
+#                                   solver='adam',learning_rate='adaptive',
+#                                   verbose=True, tol=0.0001, random_state=1,learning_rate_init=.001))])
+#
+# clf.fit(X[:70000],y[:70000])
+# Accuracy: 0.9516310461192351
+
 
 clf = Pipeline([('vectorizer', DictVectorizer(sparse=False)),
                 ('classifier',RandomForestClassifier(verbose=1,criterion='entropy',n_estimators=100))])

@@ -14,7 +14,7 @@ pdflatex:
 	pdflatex $(FILE)
 
 clean:
-	rm -f *.bbl *.log *.blg *.aux *.out *.idx *.run.xml *.bcf *.fdb_latexmk *.fls *.gz *.bak~ *.toc
+	rm -f *.bbl *.log *.blg *.aux *.out *.idx *.run.xml *.bcf *.fdb_latexmk *.fls *.gz *.bak~ *.toc *.bak *.sav
 cleanall: clean
 	rm -f *.pdf
 
