@@ -14,4 +14,4 @@ The source codes corresponding to different model setups in the report:
 | POS_keras_scikitlearnwrapper.py | Keras, Scikit-learn | hand crafted | DT, RF, NN  |
 | POS_keras.py                    | Keras               | hand crafted | NN          |
 | POS_w2v_keras.py                | Keras               | word2vec     | NN          |
-| yPOS_LSTM_keras_w2v.p           | Keras               | word2vec     | BI-LSTM RNN |
+| POS_LSTM_keras_w2v.py          | Keras               | word2vec     | BI-LSTM RNN |
