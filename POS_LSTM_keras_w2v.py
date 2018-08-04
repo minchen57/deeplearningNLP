@@ -30,6 +30,7 @@ from keras.models import Model
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
 from keras.callbacks import EarlyStopping
+from keras.models import Sequential
 
 # PARAMETERS ================
 MAX_SEQUENCE_LENGTH = 100
@@ -184,6 +185,23 @@ model = Model(sequence_input, preds)
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['acc'])
+
+#alternatives for defining the model, more intuitive way:
+# model = Sequential()
+#
+# embedding_layer = Embedding(len(word2int) + 1,
+#                             EMBEDDING_DIM,
+#                             weights=[embedding_matrix],
+#                             input_length=MAX_SEQUENCE_LENGTH,
+#                             trainable=True)
+#
+# model.add(embedding_layer)
+# model.add(Bidirectional(LSTM(64, return_sequences=True)))
+# model.add(TimeDistributed(Dense(len(tag2int) + 1, activation='softmax')))
+#
+# model.compile(loss='categorical_crossentropy',
+#               optimizer='rmsprop',
+#               metrics=['acc'])
 
 print("model fitting - Bidirectional LSTM")
 model.summary()
